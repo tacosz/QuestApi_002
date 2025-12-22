@@ -28,7 +28,7 @@ class DefaultContainerApp : ContainerApp{
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseurl)
         .addConverterFactory(
-            factory = Json {
+            Json {
                 ignoreUnknownKeys = true
                 prettyPrint = true
                 isLenient = true
