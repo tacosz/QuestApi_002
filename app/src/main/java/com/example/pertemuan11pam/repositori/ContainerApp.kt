@@ -38,4 +38,8 @@ class DefaultContainerApp : ContainerApp{
     private val retrofitService : ServiceApiSiswa by lazy {
         retrofit.create(ServiceApiSiswa::class.java)
     }
+
+    override val repositoryDataSiswa: RepositoryDataSiswa by lazy {
+        JaringanRepositoryDataSiswa(serviceAppSiswa = retrofitService)
+    }
 }
