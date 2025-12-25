@@ -1,5 +1,6 @@
 package com.example.pertemuan11pam.apiservice
 
+import com.example.pertemuan11pam.modeldata.DataSiswa
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
