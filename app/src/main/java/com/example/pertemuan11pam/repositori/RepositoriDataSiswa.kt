@@ -1,5 +1,6 @@
 package com.example.pertemuan11pam.repositori
 
+import com.example.pertemuan11pam.apiservice.ServiceApiSiswa
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -32,4 +33,10 @@ class DefaultContainerApp : ContainerApp{
         )
         .client(klien)
         .build()
+
+    private val retrofitService : ServiceApiSiswa by lazy {
+        retrofit.create(ServiceApiSiswa::class.java)
+    }
+
+
 }
