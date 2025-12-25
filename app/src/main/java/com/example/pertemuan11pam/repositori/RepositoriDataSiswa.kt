@@ -1,7 +1,11 @@
 package com.example.pertemuan11pam.repositori
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
 
 interface ContainerApp {
     val repositoryDataSiswa : RepositoryDataSiswa
@@ -15,5 +19,17 @@ class DefaultContainerApp : ContainerApp{
     }
     val klien = OkHttpClient.Builder()
         .addInterceptor(interceptor = logging)
+        .build()
+
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(baseurl)
+        .addConverterFactory(
+            Json{
+                ignoreUnknownKeys = true
+                prettyPrint = true
+                isLenient = true
+            }.asConverterFactory(contentType = "application/json".toMediaType())
+        )
+        .client(klien)
         .build()
 }
