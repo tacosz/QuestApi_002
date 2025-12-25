@@ -1,5 +1,6 @@
 package com.example.pertemuan11pam.view
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -16,7 +17,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pertemuan11pam.uicontroller.route.DestinasiHome
-import java.lang.reflect.Modifier
 import com.example.pertemuan11pam.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,5 +49,21 @@ fun HomeScreen(
                 )
             }
         },
-    ) {  }
+    ) { innerPadding ->
+        HomeBody(
+            statusUiSiswa = viewModel.listSiswa,
+            onSiswaClick = navigateToItemUpdate,
+            retryAction = viewModel::loadSiswa,
+            modifier = modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+        )
+    }
 }
+@Composable
+fun HomeBody(
+    statusUiSiswa: StatusUiSiswa,
+    onSiswaClick: (Int) -> Unit,
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier
+)
