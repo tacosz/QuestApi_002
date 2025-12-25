@@ -1,5 +1,6 @@
 package com.example.pertemuan11pam.repositori
 
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 interface ContainerApp {
@@ -12,4 +13,7 @@ class DefaultContainerApp : ContainerApp{
     val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
+    val klien = OkHttpClient.Builder()
+        .addInterceptor(interceptor = logging)
+        .build()
 }
