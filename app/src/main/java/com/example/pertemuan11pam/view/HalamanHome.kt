@@ -1,11 +1,13 @@
 package com.example.pertemuan11pam.view
 
 import android.media.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
@@ -27,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pertemuan11pam.uicontroller.route.DestinasiHome
 import com.example.pertemuan11pam.R
+import com.example.pertemuan11pam.modeldata.DataSiswa
+import androidx.compose.foundation.lazy.items
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -109,6 +113,25 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier){
         Text(text = stringResource(R.string.gagal), modifier = Modifier.padding(16.dp))
         Button(onClick = retryAction) {
             Text(stringResource(R.string.retry))
+        }
+    }
+}
+
+@Composable
+fun DaftarSiswa(
+    itemSiswa : List<DataSiswa>,
+    onSiswaClick: (DataSiswa) -> Unit,
+    modifier: Modifier = Modifier
+){
+    LazyColumn(modifier = Modifier) {
+        items(items = itemSiswa, key = {it.id}){
+                person ->
+            ItemSiswa(
+                siswa = person,
+                modifier = Modifier
+                    .padding(dimensionResource(id = R.dimen.padding_small))
+                    .clickable{onSiswaClick(person)}
+            )
         }
     }
 }
