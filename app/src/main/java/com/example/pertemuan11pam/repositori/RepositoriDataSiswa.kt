@@ -1,5 +1,6 @@
 package com.example.pertemuan11pam.repositori
 
+import android.app.Application
 import com.example.pertemuan11pam.apiservice.ServiceApiSiswa
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -40,5 +41,13 @@ class DefaultContainerApp : ContainerApp{
 
     override val repositoryDataSiswa: RepositoryDataSiswa by lazy {
         retrofit.create(ServiceApiSiswa::class.java)
+    }
+}
+
+class AplikasiDataSiswa : Application() {
+    lateinit var container : ContainerApp
+    override fun onCreate() {
+        super.onCreate()
+        this.container = DefaultContainerApp()
     }
 }
