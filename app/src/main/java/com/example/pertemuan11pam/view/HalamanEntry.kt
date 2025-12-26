@@ -29,6 +29,7 @@ import com.example.pertemuan11pam.uicontroller.route.DestinasiEntry
 import com.example.pertemuan11pam.viewmodel.EntryViewModel
 import kotlinx.coroutines.launch
 import com.example.pertemuan11pam.R
+import com.example.pertemuan11pam.viewmodel.provider.PenyediaViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -80,7 +81,7 @@ fun EntrySiswaBody(
     ) {
         FormTambahSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
-            onSiswaValueChange = onSiswaValueChange,
+            onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
         )
         Button(

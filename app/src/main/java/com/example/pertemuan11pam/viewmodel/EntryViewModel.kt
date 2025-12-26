@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import com.example.pertemuan11pam.modeldata.DetailSiswa
 import com.example.pertemuan11pam.modeldata.toDataSiswa
-import okhttp3.Response
+import retrofit2.Response
 
 class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa):
     ViewModel() {

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pertemuan11pam.modeldata.DataSiswa
 import com.example.pertemuan11pam.ui.theme.Pertemuan11PAMTheme
+import com.example.pertemuan11pam.uicontroller.DataSiswaApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

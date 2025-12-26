@@ -37,6 +37,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import com.example.pertemuan11pam.viewmodel.HomeViewModel
+import com.example.pertemuan11pam.viewmodel.StatusUiSiswa
+import com.example.pertemuan11pam.viewmodel.provider.PenyediaViewModel
+import androidx.compose.foundation.Image
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -105,7 +109,8 @@ fun HomeBody(
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
         modifier = modifier.size(200.dp),
-        painter = painterResource(R.string.loading)
+        painter = painterResource(R.drawable.loading_img),
+        contentDescription = stringResource(R.string.loading)
     )
 }
 
