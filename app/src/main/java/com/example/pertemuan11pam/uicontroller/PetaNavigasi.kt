@@ -1,14 +1,17 @@
 package com.example.pertemuan11pam.uicontroller
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import androidx.navigation.NavType
 import com.example.pertemuan11pam.uicontroller.route.DestinasiEntry
 import com.example.pertemuan11pam.uicontroller.route.DestinasiHome
 import com.example.pertemuan11pam.view.EntrySiswaScreen
 import com.example.pertemuan11pam.view.HomeScreen
-import java.lang.reflect.Modifier
 
 @Composable
 fun DataSiswaApp(navController: NavHostController = rememberNavController(),
@@ -24,10 +27,9 @@ fun HostNavigasi(
     NavHost(navController = navController, startDestination = DestinasiHome.route,
         modifier = Modifier){
         composable(DestinasiHome.route){
-            HomeScreen(navigateToItemEntry = {navController.navigate
-                (DestinasiEntry.route)},
+            HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
                 navigateToItemUpdate = {
-                    navController.navigate("${DestinasiDetail.route}/${it}")
+                    //navController.navigate("${DestinasiDetail.route}/${it}")
                 })
         }
         composable(DestinasiEntry.route){
