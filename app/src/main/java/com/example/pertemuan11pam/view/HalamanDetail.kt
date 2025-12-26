@@ -38,6 +38,7 @@ import com.example.pertemuan11pam.viewmodel.StatusUiDetail
 import com.example.pertemuan11pam.viewmodel.provider.PenyediaViewModel
 import com.example.pertemuan11pam.R
 import com.example.pertemuan11pam.modeldata.DataSiswa
+import com.example.pertemuan11pam.uicontroller.route.DestinasiDetail
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -11,6 +11,7 @@ import com.example.pertemuan11pam.modeldata.UIStateSiswa
 import com.example.pertemuan11pam.modeldata.toDataSiswa
 import com.example.pertemuan11pam.modeldata.toUiStateSiswa
 import com.example.pertemuan11pam.repositori.RepositoryDataSiswa
+import com.example.pertemuan11pam.uicontroller.route.DestinasiDetail
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
