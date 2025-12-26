@@ -8,9 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pertemuan11pam.modeldata.DetailSiswa
 import com.example.pertemuan11pam.modeldata.UIStateSiswa
+import com.example.pertemuan11pam.modeldata.toDataSiswa
 import com.example.pertemuan11pam.modeldata.toUiStateSiswa
 import com.example.pertemuan11pam.repositori.RepositoryDataSiswa
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class EditViewModel (savedStateHandle: SavedStateHandle,private  val repositoryDataSiswa: RepositoryDataSiswa): ViewModel(){
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
@@ -30,6 +32,17 @@ class EditViewModel (savedStateHandle: SavedStateHandle,private  val repositoryD
     private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa): Boolean{
         return with(uiState){
             nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
+        }
+    }
+    suspend fun editSatuSiswa(){
+        if (validasiInput(uiStateSiswa.detailSiswa)){
+            val call: Response<Void> = repositoryDataSiswa.editSatuSiswa(idSiswa, uiStateSiswa.detailSiswa.toDataSiswa())
+
+            if (call.isSuccessful){
+                println("Update Sukses : ${call.message()}")
+            }else{
+                println("Update Error : ${call.errorBody()}")
+            }
         }
     }
 }
