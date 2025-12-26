@@ -2,6 +2,7 @@ package com.example.pertemuan11pam.repositori
 
 import com.example.pertemuan11pam.apiservice.ServiceApiSiswa
 import com.example.pertemuan11pam.modeldata.DataSiswa
+import retrofit2.Response
 
 interface RepositoryDataSiswa {
     suspend fun getDataSiswa() : List<DataSiswa>
@@ -16,4 +17,7 @@ class JaringanRepositoryDataSiswa(
 ): RepositoryDataSiswa{
     override suspend fun getDataSiswa(): List<DataSiswa> = serviceApiSiswa.getSiswa()
     override suspend fun postDataSiswa(dataSiswa: DataSiswa):retrofit2.Response<Void> = serviceApiSiswa.postSiswa(dataSiswa)
+    override suspend fun getSatuSiswa(id: Int): DataSiswa = serviceApiSiswa.getStatusSiswa(id)
+    override suspend fun editSatuSiswa(id: Int, dataSiswa: DataSiswa): retrofit2.Response<Void> = serviceApiSiswa.editSatuSiswa(id,dataSiswa)
+    override suspend fun hapusSatuSiswa(id: Int): retrofit2.Response<Void> = serviceApiSiswa.hapusSatuSiswa(id)
 }
