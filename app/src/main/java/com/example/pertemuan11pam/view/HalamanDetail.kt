@@ -9,6 +9,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -31,6 +33,7 @@ import com.example.pertemuan11pam.viewmodel.DetailViewModel
 import com.example.pertemuan11pam.viewmodel.StatusUiDetail
 import com.example.pertemuan11pam.viewmodel.provider.PenyediaViewModel
 import com.example.pertemuan11pam.R
+import com.example.pertemuan11pam.modeldata.DataSiswa
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -104,6 +107,62 @@ private fun BodyDetailDataSiswa(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.delete))
+        }
+        if (deleteConfirmationRequest){
+            DeleteConfirmationDialog(
+                onDeleteConfirm = {
+                    deleteConfirmationRequest = false
+                    onDelete()
+                },
+                onDeleteCancle = {deleteConfirmationRequest = false},
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+            )
+        }
+    }
+}
+@Composable
+fun DetailDataSiswa(
+    siswa: DataSiswa, modifier: Modifier = Modifier
+){
+    Card(
+        modifier = modifier, colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(id = R.dimen.padding_medium)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        ) {
+            BarisDetailData(
+                labelResID = R.string.nama1,
+                itemDetail = siswa.nama,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
+            BarisDetailData(
+                labelResID = R.string.alamat1,
+                itemDetail = siswa.alamat,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
+            BarisDetailData(
+                labelResID = R.string.telpon1,
+                itemDetail = siswa.telpon,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
         }
     }
 }
